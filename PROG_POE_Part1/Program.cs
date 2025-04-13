@@ -126,5 +126,17 @@ namespace PROG_POE_Part1
                 }
             }
         }
+
+        static void ShareCybersecurityTips()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Chatbot: Here are some cybersecurity tips to help keep you safe online:");
+            Console.WriteLine("- Use strong, unique passwords for each account.");
+            Console.WriteLine("- Turn on two-factor authentication (2FA) wherever possible as this provides an extra layer of protection.");
+            Console.WriteLine("- Don’t click on suspicious links or email attachments as this could lead to identity theft or infromation theft.");
+            Console.WriteLine("- Keep your software and devices updated as these contain the latest security patches.");
+            Console.WriteLine("- Use a reputable antivirus or security suite and make sure to do regular scans.");
+            Console.WriteLine("- Back up your important files regularly if you have cloud services available.");
+        }
     }
 }
