@@ -34,7 +34,12 @@ namespace PROG_POE_Part1
             string userName = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Hello {userName}! I'm here to provide information on Cybersecurity");
-            Console.WriteLine("You can ask about different types of security,key aspects of Cybersecurity or type 'exit' to quit.\n");
+            Console.WriteLine("You can ask:" +
+                              "\nCybersecurity" +
+                              "\nProtection" +
+                              "\nThreats" +
+                              "\nTools" +
+                              "\nOr type 'exit' to quit.\n");
 
             while (true)
             {
@@ -50,7 +55,7 @@ namespace PROG_POE_Part1
                     continue;
                 }
 
-                if (string.IsNullOrEmpty(userInput))
+                if (userInput == "exit")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Chatbot : Keep checking up on the latest cybersecurity updates! Bye! ");
@@ -83,6 +88,42 @@ namespace PROG_POE_Part1
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Error playing audio: {ex.Message}");
 
+            }
+        }
+
+        static void HandleUserQuery(string input, string userName)
+        {
+            Dictionary<String, string> responeses = new Dictionary<string, string>
+            {
+                {"help", "You can ask about: 'Cybersecuirty' , 'Protection', 'Threats', or 'Tools'" },
+                {"cybersecurity", "Cybersecurity is the practice of protecting computers, networks, and data from unauthorized access, attacks, or damage. It helps keep your personal info, devices, and online activities safe." },
+                {"protection" , "Protection in cybersecurity means using safe habits and tools—like strong passwords, software updates, and antivirus—to keep your devices and information secure from cyber threats." },
+                {"threats", "Cyber threats are actions or events that can harm your computer, data, or online security—like viruses, hackers, phishing scams, or ransomware attacks." },
+                {"tools","Cybersecurity tools help protect your devices and data. These include antivirus software, firewalls, VPNs, password managers, and security scanners. " }
+            };
+
+            if (responeses.ContainsKey(input))
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Chatbot: {responeses[input]}");
+            }
+
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Chatbot: I didnt quite catch that, {userName}. Would you like me to suggest some Cybersecurity tips (yes/no)");
+                string reply = Console.ReadLine()?.ToLower().Trim();
+
+                if (reply == "yes")
+                {
+                    ShareCyberSecuirtyTips();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Chatbot: no problem! Let me know if you need more information on cybersecurity.");
+
+                }
             }
         }
     }
