@@ -87,7 +87,6 @@ namespace PROG_POE_Part1
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Error playing audio: {ex.Message}");
-
             }
         }
 
