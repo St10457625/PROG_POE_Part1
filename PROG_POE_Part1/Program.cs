@@ -14,7 +14,7 @@ namespace PROG_POE_Part1
         {
 
             //Play audio greeting
-            PlayGreetingAudio("Cyberbot_greeting.wav");
+            PlayGreetingAudio("Audio\\Greeting voice.wav");
 
             Console.Title = "Cyber Security Chatbot";
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -68,27 +68,30 @@ namespace PROG_POE_Part1
 
 
         static void PlayGreetingAudio(string filePath)
-        {
-            try
-            {
-                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), filePath);
+{
+    try
+    {
+        string fullPath = Path.Combine(Directory.GetCurrentDirectory(), filePath);
 
-                if (File.Exists(fullPath))
-                {
-                    SoundPlayer player = new SoundPlayer(fullPath);
-                    player.PlaySync(); //Play audio synchronousely
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                }
-            }
-            catch (Exception ex)
+        if (File.Exists(fullPath))
+        {
+            using (SoundPlayer player = new SoundPlayer(fullPath))
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Error playing audio: {ex.Message}");
+                player.PlaySync(); // Play audio synchronously
             }
         }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Audio file not found: {fullPath}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"Error playing audio: {ex.Message}");
+    }
+}
 
         static void HandleUserQuery(string input, string userName)
         {
