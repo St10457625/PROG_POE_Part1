@@ -29,8 +29,38 @@ namespace PROG_POE_Part1
                                                                    
 ");  //ASCII ART
 
+            Console.Write("What is your name? ");
+            Console.ForegroundColor = ConsoleColor.White;
+            string userName = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Hello {userName}! I'm here to provide information on Cybersecurity");
+            Console.WriteLine("You can ask about different types of security,key aspects of Cybersecurity or type 'exit' to quit.\n");
 
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"{userName}: ");
+                string userInput = Console.ReadLine()?.ToLower().Trim();
+
+
+                if (string.IsNullOrEmpty(userInput))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Chatbot: Please enter a valid question");
+                    continue;
+                }
+
+                if (string.IsNullOrEmpty(userInput))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Chatbot : Keep checking up on the latest cybersecurity updates! Bye! ");
+                    break;
+                }
+
+                HandleUserQuery(userInput, userName);
+            }
         }
+
 
         static void PlayGreetingAudio(string filePath)
         {
