@@ -116,7 +116,7 @@ namespace PROG_POE_Part1
 
                 if (reply == "yes")
                 {
-                    ShareCyberSecuirtyTips();
+                    ShareCybersecurityTips();
                 }
                 else
                 {
