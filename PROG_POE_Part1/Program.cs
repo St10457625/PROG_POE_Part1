@@ -33,7 +33,7 @@ namespace PROG_POE_Part1
             string name = Console.ReadLine();
 
             // Greet the user and explain available commands
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"Hello {name}! I'm here to provide information on Cybersecurity");
             Console.WriteLine("You can ask:" +
                               "\nCybersecurity" +
