@@ -13,11 +13,11 @@ namespace PROG_POE_Part1
         public static void Main()
         {
             // Play audio greeting at startup
-            PlayGreetingAudio("Audio\\Greeting voice.wav");
+            PlayAudio("Audio\\Greeting voice.wav");
 
             // Set console title and display ASCII art logo in cyan
             Console.Title = "Cyber Security Chatbot";
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(@"
  ██████╗██╗   ██╗██████╗ ███████╗██████╗ ██████╗  ██████╗ ████████╗
 ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗╚══██╔══╝
@@ -28,13 +28,13 @@ namespace PROG_POE_Part1
 ");  // ASCII Art header
 
             // Ask for user's name
-            Console.Write("What is your name? ");
+            Console.Write("Please enter in your name ");
             Console.ForegroundColor = ConsoleColor.White;
-            string userName = Console.ReadLine();
+            string name = Console.ReadLine();
 
             // Greet the user and explain available commands
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Hello {userName}! I'm here to provide information on Cybersecurity");
+            Console.WriteLine($"Hello {name}! I'm here to provide information on Cybersecurity");
             Console.WriteLine("You can ask:" +
                               "\nCybersecurity" +
                               "\nProtection" +
@@ -46,7 +46,7 @@ namespace PROG_POE_Part1
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"{userName}: ");
+                Console.WriteLine($"{name}: ");
                 string userInput = Console.ReadLine()?.ToLower().Trim(); // Normalize input
 
                 // Handle empty input
@@ -66,12 +66,12 @@ namespace PROG_POE_Part1
                 }
 
                 // Pass user input to the query handler
-                HandleUserQuery(userInput, userName);
+                HandleUserInput(userInput, name);
             }
         }
 
         // Method to play a .wav audio file
-        static void PlayGreetingAudio(string filePath)
+        static void PlayAudio(string filePath)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace PROG_POE_Part1
         }
 
         // Method to handle user input and generate responses
-        static void HandleUserQuery(string input, string userName)
+        static void HandleUserInput(string input, string userName)
         {
             // Dictionary of recognized keywords and responses
             Dictionary<string, string> responeses = new Dictionary<string, string>
@@ -131,7 +131,7 @@ namespace PROG_POE_Part1
                 if (reply == "yes")
                 {
                     // Provide tips if user agrees
-                    ShareCybersecurityTips();
+                    CybersecurityTips();
                 }
                 else
                 {
@@ -143,7 +143,7 @@ namespace PROG_POE_Part1
         }
 
         // Method to share a list of cybersecurity tips
-        static void ShareCybersecurityTips()
+        static void CybersecurityTips()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Chatbot: Here are some cybersecurity tips to help keep you safe online:");
